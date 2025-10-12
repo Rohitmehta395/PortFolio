@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
 
-// Optional: You can use a helper function to create slugs
 function generateSlug(text) {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9\s-]/g, "") // remove special characters
-    .replace(/\s+/g, "-") // replace spaces with hyphens
-    .replace(/-+/g, "-"); // remove multiple consecutive hyphens
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
 }
 
 const ProjectSchema = new mongoose.Schema({
@@ -17,20 +16,32 @@ const ProjectSchema = new mongoose.Schema({
   longDescription: String,
   techStack: [String],
   imageUrls: { type: [String], default: [] },
+  thumbnailUrl: String, // Main project image
   demoUrl: String,
   repoUrl: String,
   featured: { type: Boolean, default: false },
+  category: {
+    type: String,
+    enum: ["AI/ML", "Full-Stack", "Web Design", "Frontend"],
+    default: "Full-Stack",
+  },
+  status: {
+    type: String,
+    enum: ["Completed", "Live", "In Progress"],
+    default: "Completed",
+  },
+  duration: String,
+  year: String,
+  tags: [String],
   createdAt: { type: Date, default: Date.now },
 });
 
-// ✅ Middleware to generate slug before saving
 ProjectSchema.pre("validate", function (next) {
   if (this.isModified("title") || !this.slug) {
     this.slug = generateSlug(this.title);
   }
   next();
 });
-
 
 const projectModel = mongoose.model("Project", ProjectSchema);
 
