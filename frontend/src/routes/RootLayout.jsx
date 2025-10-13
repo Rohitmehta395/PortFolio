@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import AnimatedBackground from "../components/AnimatedBackground";
+import Footer from "../components/Footer";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -20,6 +21,8 @@ const RootLayout = () => {
         <AnimatePresence mode="wait" initial={false}>
           <div key={location.pathname}>
             <Outlet />
+            {/* Footer */}
+            <Footer />
           </div>
         </AnimatePresence>
       </div>
