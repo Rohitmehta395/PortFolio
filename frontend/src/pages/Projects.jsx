@@ -58,7 +58,7 @@ const Projects = () => {
               showBorder={false}
               className="text-[3rem] md:text-[8rem] lg:text-[15rem] font-black text-white leading-none mb-8"
             >
-              <h1 className="font-bold">PROJECTS</h1>
+              <h1 className="font-bold font-poppins">PROJECTS</h1>
             </GradientText>
 
             <ShinyText
@@ -125,7 +125,7 @@ const Projects = () => {
                   />
                 ))}
               </div>
-            </div>
+            </div> 
           </section>
         )}
       </div>
