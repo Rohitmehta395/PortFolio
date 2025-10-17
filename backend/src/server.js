@@ -10,22 +10,26 @@ import connectDB from "../db/connectDB.js";
 const app = express();
 const port = process.env.PORT || 8000;
 
-// Security middleware
-app.use(helmet());
-app.use(express.json());
+import cors from "cors";
 
-// CORS configuration
+// ✅ Full list of allowed origins
 const allowedOrigins = [
-  process.env.FRONTEND_URL,       // keep this for environment flexibility
-  "https://rohitmehta.netlify.app", // ✅ add your deployed frontend domain
+  "https://rohitmehta.netlify.app",
   "http://localhost:5173",
   "http://localhost:3000",
 ];
 
+// ✅ CORS middleware setup
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (like mobile apps, Postman)
+      if (!origin) return callback(null, true);
+
+      // Debug log for Render console
+      console.log("🌐 Incoming origin:", origin);
+
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         console.log("❌ CORS blocked for:", origin);
@@ -35,6 +39,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 
 // Logging
