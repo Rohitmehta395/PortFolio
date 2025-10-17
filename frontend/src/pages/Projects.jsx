@@ -11,20 +11,20 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      const API_URL = import.meta.env.VITE_API_URL;
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
-      axios
-        .get(`${API_URL}/projects`)
-        .then((res) => {
-          setProjects(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching projects:", err);
-          setLoading(false);
-        });
-    }, []);
+    axios
+      .get(`${API_URL}/projects`, { withCredentials: true })
+      .then((res) => {
+        setProjects(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("❌ Error fetching projects:", err);
+        setLoading(false);
+      });
+  }, []);
 
   const featuredProjects = projects.filter((p) => p.featured);
   const otherProjects = projects.filter((p) => !p.featured);
@@ -127,7 +127,7 @@ const Projects = () => {
                   />
                 ))}
               </div>
-            </div> 
+            </div>
           </section>
         )}
       </div>
