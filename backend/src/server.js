@@ -14,25 +14,28 @@ const port = process.env.PORT || 8000;
 app.use(helmet());
 app.use(express.json());
 
-// ✅ CORS setup
+// CORS configuration
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URL,       // keep this for environment flexibility
+  "https://rohitmehta.netlify.app", // ✅ add your deployed frontend domain
   "http://localhost:5173",
-  "http://localhost:3000"
-].filter(Boolean);
+  "http://localhost:3000",
+];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // allow requests with no origin (e.g. mobile apps, curl)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      console.warn("❌ Blocked by CORS:", origin);
-      return callback(new Error("Not allowed by CORS"));
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("❌ CORS blocked for:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
     },
     credentials: true,
   })
 );
+
 
 // Logging
 if (process.env.NODE_ENV !== "production") {
@@ -47,18 +50,18 @@ app.use("/projects", projectsRoute);
 
 // Health check
 app.get("/", (req, res) => {
-  res.json({ 
+  res.json({
     message: "Rohit Mehta Portfolio API",
     status: "running",
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
 app.get("/api/health", (req, res) => {
-  res.json({ 
-    ok: true, 
+  res.json({
+    ok: true,
     database: "connected",
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
@@ -70,9 +73,12 @@ app.use((req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
+  res.status(500).json({
     error: "Something went wrong!",
-    message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message
+    message:
+      process.env.NODE_ENV === "production"
+        ? "Internal server error"
+        : err.message,
   });
 });
 
