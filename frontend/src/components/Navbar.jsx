@@ -37,9 +37,7 @@ const Navbar = () => {
             </div>
             <div className="text-white">
               <h2 className="text-lg font-bold">Rohit Mehta</h2>
-              <p className="text-xs text-gray-400">
-                Software Developer
-              </p>
+              <p className="text-xs text-gray-400">Software Developer</p>
             </div>
           </motion.div>
 
@@ -82,16 +80,18 @@ const Navbar = () => {
           </motion.ul>
 
           {/* Resume Button - Desktop */}
-          <motion.button
+          <motion.a
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            onClick={() => window.open("/resume.pdf", "_blank")}
+            href="/Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-200 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105"
           >
             <span>Resume</span>
             <FiArrowRight className="w-4 h-4" />
-          </motion.button>
+          </motion.a>
 
           {/* Mobile Menu Button */}
           <button
@@ -135,7 +135,7 @@ const Navbar = () => {
                 ))}
                 <button
                   onClick={() => {
-                    window.open("/resume.pdf", "_blank");
+                    window.open("/Resume.pdf", "_blank");
                     setMobileMenuOpen(false);
                   }}
                   className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-3 rounded-lg font-medium mt-4"

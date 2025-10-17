@@ -45,7 +45,7 @@ const Home = () => {
     { number: "450+", label: "Problems Solved" },
     { number: "6+", label: "Projects Built" },
     { number: "9.15", label: "CGPA" },
-    { number: "1+", label: "Years Experience" },
+    { number: "2+", label: "Months Experience (Internship)" },
   ];
 
   const featuredProjects = [
@@ -143,8 +143,9 @@ const Home = () => {
                     <FiArrowRight className="w-5 h-5" />
                   </Link>
                   <a
-                    href="/resume.pdf"
-                    download
+                    href="/Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-semibold rounded-full transition-all duration-300 inline-flex items-center justify-center gap-2"
                   >
                     Download Resume

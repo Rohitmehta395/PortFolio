@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
   FiMail,
   FiPhone,
@@ -12,12 +13,14 @@ import {
   FiUser,
   FiMessageSquare,
   FiCheckCircle,
+  FiAlertCircle,
 } from "react-icons/fi";
 import ClickSpark from "../components/ClickSpark";
 import ShinyText from "../components/ShinyText";
 import GradientText from "../components/GradientText";
 
 const Contact = () => {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,6 +29,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -41,26 +45,50 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Create mailto link with form data
-    const mailtoLink = `mailto:rohitmehtaddn@gmail.com?subject=${encodeURIComponent(
-      formData.subject
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-
-    window.location.href = mailtoLink;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-
+    // Validate form
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.subject ||
+      !formData.message
+    ) {
+      setSubmitStatus("error");
+      setErrorMessage("Please fill in all fields");
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1000);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setErrorMessage("");
+
+    try {
+      //EmailJS credentials
+      const result = await emailjs.sendForm(
+        "service_4dyi6rs", //EmailJS Service ID
+        "template_vytxofv", //EmailJS Template ID
+        formRef.current,
+        "XsjH93_QKeKibtuiC" //EmailJS Public Key
+      );
+
+      if (result.text === "OK") {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setSubmitStatus(null), 5000);
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus("error");
+      setErrorMessage(
+        "Failed to send message. Please try again or email me directly."
+      );
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -208,12 +236,28 @@ const Contact = () => {
                   >
                     <FiCheckCircle className="text-green-400 flex-shrink-0" />
                     <p className="text-green-400 text-sm">
-                      Thank you! Your email client should open shortly.
+                      Thank you! Your message has been sent successfully. I'll
+                      get back to you soon!
                     </p>
                   </motion.div>
                 )}
 
-                <div className="space-y-6">
+                {submitStatus === "error" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center gap-3"
+                  >
+                    <FiAlertCircle className="text-red-400 flex-shrink-0" />
+                    <p className="text-red-400 text-sm">{errorMessage}</p>
+                  </motion.div>
+                )}
+
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
                   {/* Name Input */}
                   <div>
                     <label className="block text-white font-semibold mb-2">
@@ -226,6 +270,7 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        required
                         className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-12 py-3 text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none transition-colors"
                         placeholder="John Doe"
                       />
@@ -244,6 +289,7 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        required
                         className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-12 py-3 text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none transition-colors"
                         placeholder="john@example.com"
                       />
@@ -262,6 +308,7 @@ const Contact = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
+                        required
                         className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-12 py-3 text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none transition-colors"
                         placeholder="Project Inquiry"
                       />
@@ -277,6 +324,7 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
+                      required
                       rows={6}
                       className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-cyan-500 focus:outline-none transition-colors resize-none"
                       placeholder="Tell me about your project or inquiry..."
@@ -285,14 +333,14 @@ const Contact = () => {
 
                   {/* Submit Button */}
                   <button
-                    onClick={handleSubmit}
+                    type="submit"
                     disabled={isSubmitting}
                     className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Opening Email...
+                        Sending...
                       </>
                     ) : (
                       <>
@@ -301,7 +349,7 @@ const Contact = () => {
                       </>
                     )}
                   </button>
-                </div>
+                </form>
               </motion.div>
 
               {/* Additional Info & Social Links */}
