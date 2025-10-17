@@ -10,10 +10,9 @@ import connectDB from "../db/connectDB.js";
 const app = express();
 const port = process.env.PORT || 8000;
 
-
 // ✅ Full list of allowed origins
 const allowedOrigins = [
-  "https://rohittmehta.netlify.app",
+  process.env.FRONTEND_URL,
   "http://localhost:5173",
   "http://localhost:3000",
 ];
@@ -38,8 +37,6 @@ app.use(
     credentials: true,
   })
 );
-
-
 
 // Logging
 if (process.env.NODE_ENV !== "production") {

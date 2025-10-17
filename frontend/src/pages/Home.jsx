@@ -13,7 +13,7 @@ import {
 } from "react-icons/fi";
 import { Typewriter } from "react-simple-typewriter";
 import ClickSpark from "../components/ClickSpark";
-import profilePic from "../assets/new_rohit_circle.jpg";
+import profilePic from "../assets/new_rohit_circle.webp";
 
 const Home = () => {
   const fadeInUp = {

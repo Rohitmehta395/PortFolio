@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
-import logo from "../assets/new_rohit_circle.jpg";
+import logo from "../assets/new_rohit_circle.webp";
 
 const Navbar = () => {
   const navigate = useNavigate();
