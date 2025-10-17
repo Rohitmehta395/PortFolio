@@ -12,7 +12,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const API_URL = import.meta.env.VITE_API_URL;
 
       axios
         .get(`${API_URL}/projects`)
