@@ -10,7 +10,6 @@ import connectDB from "../db/connectDB.js";
 const app = express();
 const port = process.env.PORT || 8000;
 
-import cors from "cors";
 
 // ✅ Full list of allowed origins
 const allowedOrigins = [
