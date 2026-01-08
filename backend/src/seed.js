@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "../.env" });
 
 import mongoose from "mongoose";
 import Project from "./models/Project.js";
@@ -153,6 +153,38 @@ async function seed() {
         category: "Frontend",
         status: "Live",
         year: "2025",
+      },
+      {
+        title: "Sharada Education Trust (Internship)",
+        shortDescription:
+          "Comprehensive web platform for an educational NGO featuring admin dashboard, blog management, and member profiles",
+        longDescription:
+          "A full-featured educational trust website built with MERN stack, featuring dynamic content management, blog publishing system with rich text editor, team member management, education image galleries, email newsletter integration, and a responsive design. Includes admin authentication, image upload functionality, and SEO optimization.",
+        techStack: [
+          "React",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Mongoose",
+          "JWT Authentication",
+          "Tailwind CSS",
+          "React Router",
+          "Multer",
+          "React Quill",
+          "Nodemailer",
+          "Framer Motion",
+          "Axios",
+          "bcryptjs",
+        ],
+        thumbnailUrl:
+          "https://ngo-82p8.onrender.com/uploads/blog-1766320536724.webp",
+        imageUrls: [],
+        demoUrl: "https://ngo-internship.vercel.app",
+        repoUrl: "https://github.com/Rohitmehta395/NGO_Internship",
+        featured: true,
+        category: "Full-Stack",
+        status: "In Progress",
+        year: "25-26",
       },
     ]);
 
