@@ -50,6 +50,30 @@ const Home = () => {
 
   const featuredProjects = [
     {
+      title: "Sharada Education Trust (Internship)",
+      description:
+        "Comprehensive web platform for an educational NGO featuring admin dashboard, blog management, and member profilesA full-featured educational trust website built with MERN stack.",
+      tech: [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "JWT Authentication",
+        "Tailwind CSS",
+        "React Router",
+        "Multer",
+        "React Quill",
+        "Nodemailer",
+        "Framer Motion",
+        "Axios",
+        "bcryptjs",
+      ],
+      image: "https://ngo-82p8.onrender.com/uploads/blog-1766320536724.webp",
+      liveUrl: "https://ngo-internship.vercel.app",
+      githubUrl: "https://github.com/Rohitmehta395/NGO_Internship",
+    },
+    {
       title: "Pro-Rental Platform",
       description:
         "Full-stack property rental platform with authentication and cloud storage",
@@ -59,16 +83,16 @@ const Home = () => {
       liveUrl: "https://wanderlust-322o.onrender.com",
       githubUrl: "https://github.com/Rohitmehta395/WanderLust",
     },
-    {
-      title: "News-Today",
-      description:
-        "News aggregation platform with category filtering and search",
-      tech: ["React", "Node.js", "MongoDB", "Bootstrap"],
-      image:
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800",
-      liveUrl: "https://news-today-alpha.vercel.app",
-      githubUrl: "https://github.com/Rohitmehta395/News-Today",
-    },
+    // {
+    //   title: "News-Today",
+    //   description:
+    //     "News aggregation platform with category filtering and search",
+    //   tech: ["React", "Node.js", "MongoDB", "Bootstrap"],
+    //   image:
+    //     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800",
+    //   liveUrl: "https://news-today-alpha.vercel.app",
+    //   githubUrl: "https://github.com/Rohitmehta395/News-Today",
+    // },
   ];
 
   return (
