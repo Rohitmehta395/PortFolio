@@ -1,7 +1,7 @@
 import React from "react";
 import { href, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import logo from "../assets/new_rohit_circle.webp";
+import logo from "../assets/Icon_Rohit.webp";
 import {
   FiGithub,
   FiLinkedin,
