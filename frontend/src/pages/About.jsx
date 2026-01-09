@@ -10,7 +10,7 @@ import {
 import ClickSpark from "../components/ClickSpark";
 import ShinyText from "../components/ShinyText";
 import GradientText from "../components/GradientText";
-import profilePic from "../assets/new_rohit_circle.webp";
+import profilePic from "../assets/Icon_Rohit.webp";
 
 const About = () => {
   const fadeInUp = {
