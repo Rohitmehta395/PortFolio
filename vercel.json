@@ -28,7 +28,6 @@
     },
     {
       "source": "/(.*)",
-      "status": 200,
       "destination": "frontend/index.html"
     }
   ]
