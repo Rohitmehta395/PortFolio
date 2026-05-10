@@ -66,6 +66,11 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+// Lightweight ping route for keep-alive cron jobs
+app.get("/api/ping", (req, res) => {
+  res.status(200).send("pong");
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
