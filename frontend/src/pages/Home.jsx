@@ -74,25 +74,29 @@ const Home = () => {
       githubUrl: "https://github.com/Rohitmehta395/NGO_Internship",
     },
     {
-      title: "Pro-Rental Platform",
+      title: "Payana Trails (Internship)",
       description:
-        "Full-stack property rental platform with authentication and cloud storage",
-      tech: ["Node.js", "Express.js", "MongoDB", "EJS"],
+        "Full-stack travel and tourism management platform developed during internship with booking, admin, and destination management features",
+      tech: [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "JWT Authentication",
+        "Tailwind CSS",
+        "REST API",
+        "Axios",
+        "Cloudinary",
+        "Multer",
+        "bcryptjs",
+        "Framer Motion",
+      ],
       image:
-        "https://images.unsplash.com/photo-1759428679273-11d914866394?w=800",
-      liveUrl: "https://wanderlust-322o.onrender.com",
-      githubUrl: "https://github.com/Rohitmehta395/WanderLust",
+        "https://res.cloudinary.com/di9ezv3em/image/upload/v1778399816/Screenshot_2026-05-10_132400_etinoz.png",
+      liveUrl: "https://payanatrails.com/",
+      githubUrl: "https://github.com/Rohitmehta395/Payana_Trails-Internship",
     },
-    // {
-    //   title: "News-Today",
-    //   description:
-    //     "News aggregation platform with category filtering and search",
-    //   tech: ["React", "Node.js", "MongoDB", "Bootstrap"],
-    //   image:
-    //     "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800",
-    //   liveUrl: "https://news-today-alpha.vercel.app",
-    //   githubUrl: "https://github.com/Rohitmehta395/News-Today",
-    // },
   ];
 
   return (

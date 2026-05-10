@@ -14,6 +14,67 @@ async function seed() {
 
     await Project.create([
       {
+        title: "Payana Trails (Internship)",
+        shortDescription:
+          "Full-stack travel and tourism management platform developed during internship with booking, admin, and destination management features",
+        longDescription:
+          "A comprehensive MERN-stack travel platform developed during internship, designed to streamline tour package management, destination exploration, booking workflows, and user engagement. The project includes secure authentication, admin dashboard functionalities, responsive UI, dynamic package listings, image uploads, RESTful APIs, and scalable backend architecture. Focused on delivering a modern travel experience with optimized performance and clean user interaction.",
+        techStack: [
+          "React",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Mongoose",
+          "JWT Authentication",
+          "Tailwind CSS",
+          "REST API",
+          "Axios",
+          "Cloudinary",
+          "Multer",
+          "bcryptjs",
+          "Framer Motion",
+        ],
+        thumbnailUrl:
+          "https://res.cloudinary.com/di9ezv3em/image/upload/v1778399816/Screenshot_2026-05-10_132400_etinoz.png",
+        imageUrls: [],
+        demoUrl: "https://payanatrails.com/",
+        repoUrl: "https://github.com/Rohitmehta395/Payana_Trails-Internship",
+        featured: true,
+        category: "Full-Stack",
+        status: "Completed",
+        year: "2026",
+      },
+      {
+        title: "Resume IQ",
+        shortDescription:
+          "AI-powered resume analysis and optimization platform for improving ATS score and resume quality",
+        longDescription:
+          "An intelligent resume analysis platform that helps users evaluate and improve their resumes using AI-driven insights. The application analyzes resume structure, keyword optimization, ATS compatibility, and formatting quality while providing actionable recommendations. Built with a modern full-stack architecture featuring secure authentication, file upload handling, responsive UI, and seamless user experience.",
+        techStack: [
+          "React",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Mongoose",
+          "OpenAI API",
+          "JWT Authentication",
+          "Tailwind CSS",
+          "REST API",
+          "Axios",
+          "Multer",
+          "bcryptjs",
+        ],
+        thumbnailUrl:
+          "https://res.cloudinary.com/di9ezv3em/image/upload/v1778399816/Screenshot_2026-05-10_132308_advh8g.png",
+        imageUrls: [],
+        demoUrl: "https://resume-iq-orpin.vercel.app/",
+        repoUrl: "https://github.com/Rohitmehta395/Resume-IQ",
+        featured: true,
+        category: "Full-Stack",
+        status: "Completed",
+        year: "2026",
+      },
+      {
         title: "PortFolio",
         shortDescription:
           "Rohit Mehta's personal portfolio website showcasing projects and skills",
@@ -35,9 +96,9 @@ async function seed() {
         imageUrls: [],
         demoUrl: "https://github.com/Rohitmehta395/PortFolio",
         repoUrl: "https://github.com/Rohitmehta395/PortFolio",
-        featured: true,
+        featured: false,
         category: "Full-Stack",
-        status: "In Progress",
+        status: "Completed",
         year: "2025",
       },
       {
@@ -106,7 +167,7 @@ async function seed() {
         imageUrls: [],
         demoUrl: "https://news-today-alpha.vercel.app",
         repoUrl: "https://github.com/Rohitmehta395/News-Today",
-        featured: true,
+        featured: false,
         category: "Full-Stack",
         status: "Completed",
         year: "2025",
@@ -185,6 +246,36 @@ async function seed() {
         category: "Full-Stack",
         status: "In Progress",
         year: "25-26",
+      },
+      {
+        title: "Textro Chat App",
+        shortDescription:
+          "Real-time full-stack chat application with instant messaging and modern responsive UI",
+        longDescription:
+          "A modern real-time chat application built to provide seamless communication between users with instant messaging capabilities. The project includes secure authentication, responsive chat interface, real-time socket-based communication, user management, and scalable backend architecture. Designed with a clean UI/UX focus to deliver smooth conversations across devices while maintaining efficient performance and modern web standards.",
+        techStack: [
+          "React",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Mongoose",
+          "Socket.IO",
+          "JWT Authentication",
+          "Tailwind CSS",
+          "REST API",
+          "Axios",
+          "bcryptjs",
+          "Cloudinary",
+        ],
+        thumbnailUrl:
+          "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200",
+        imageUrls: [],
+        demoUrl: "https://github.com/Rohitmehta395/Textro_ChatApp",
+        repoUrl: "https://github.com/Rohitmehta395/Textro_ChatApp",
+        featured: false,
+        category: "Full-Stack",
+        status: "Completed",
+        year: "2026",
       },
     ]);
 
