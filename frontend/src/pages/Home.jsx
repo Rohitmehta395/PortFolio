@@ -50,7 +50,7 @@ const Home = () => {
 
   const featuredProjects = [
     {
-      title: "Sharada Education Trust (Internship)",
+      title: "Sharada Educational Trust (Internship)",
       description:
         "Comprehensive web platform for an educational NGO featuring admin dashboard, blog management, and member profilesA full-featured educational trust website built with MERN stack.",
       tech: [

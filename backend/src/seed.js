@@ -155,7 +155,7 @@ async function seed() {
         year: "2025",
       },
       {
-        title: "Sharada Education Trust (Internship)",
+        title: "Sharada Educational Trust (Internship)",
         shortDescription:
           "Comprehensive web platform for an educational NGO featuring admin dashboard, blog management, and member profiles",
         longDescription:
